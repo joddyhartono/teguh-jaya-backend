@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TeguhJaya.Api.Interfaces;
 
@@ -16,6 +17,7 @@ namespace TeguhJaya.Api.Controllers
             _repository = repository;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetCategories()
         {
