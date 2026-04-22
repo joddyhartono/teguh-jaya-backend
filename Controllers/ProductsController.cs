@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TeguhJaya.Api.Interfaces;
 using TeguhJaya.Api.Models;
@@ -18,6 +19,7 @@ namespace TeguhJaya.Api.Controllers
             _repository = repository;
         }
 
+        [AllowAnonymous]
         [HttpGet("/Categories/{categoryId}/Products")]
         public IActionResult GetProductsByCategory([FromRoute] int categoryId)
         {
@@ -35,6 +37,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetProduct([FromRoute] int id)
         {
