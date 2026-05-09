@@ -54,7 +54,7 @@ namespace TeguhJaya.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while logging in");
+                _logger.LogError(ex, "Error occurred while logging in");
                 return StatusCode(500, "Internal server error");
             }
         }

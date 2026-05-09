@@ -32,7 +32,7 @@ namespace TeguhJaya.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while retrieving products");
+                _logger.LogError(ex, "Error occurred while retrieving products");
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -50,56 +50,7 @@ namespace TeguhJaya.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while retrieving product");
-                return StatusCode(500, "Internal server error");
-            }
-        }
-
-        [HttpPost]
-        public IActionResult CreateProduct([FromBody] Product product)
-        {
-            _logger.LogInformation("CreateProduct started");
-            try
-            {
-                _repository.CreateProduct(product);
-                _logger.LogInformation("CreateProduct finished successfully");
-                return Ok(product);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occured while creating product");
-                return StatusCode(500, "Internal server error");
-            }
-        }
-
-        [HttpPatch]
-        public IActionResult UpdateProduct([FromBody] int id)
-        {
-            _logger.LogInformation("UpdateProduct started");
-            try
-            {
-                _repository.UpdateProduct(id);
-                return Ok(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occured while updating product");
-                return StatusCode(500, "Internal server error");
-            }
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(int id)
-        {
-            _logger.LogInformation("DeleteProduct started");
-            try
-            {
-                _repository.DeleteProduct(id);
-                return Ok(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occured while deleting product");
+                _logger.LogError(ex, "Error occurred while retrieving product");
                 return StatusCode(500, "Internal server error");
             }
         }

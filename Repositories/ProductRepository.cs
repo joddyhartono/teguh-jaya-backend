@@ -27,27 +27,11 @@ namespace TeguhJaya.Api.Repositories
             }
         }
 
-        public void CreateProduct(Product product)
+        public int GetTotal()
         {
             using (var connection = CreateConnection())
             {
-                connection.Execute(ProductQuery.qCreateProduct, product);
-            }
-        }
-
-        public void UpdateProduct(int id)
-        {
-            using (var connection = CreateConnection())
-            {
-                connection.Execute(ProductQuery.qUpdateProduct, id);
-            }
-        }
-
-        public void DeleteProduct(int id)
-        {
-            using (var connection = CreateConnection())
-            {
-                connection.Execute(ProductQuery.qDeleteProduct, id);
+                return connection.ExecuteScalar<int>(ProductQuery.qGetTotal);
             }
         }
     }

@@ -16,7 +16,7 @@ namespace TeguhJaya.Api.Queries
 
         public const string qCreateProduct = @"
             INSERT INTO products (category_id, name, price)
-            VALUES (@category_id, @name, @price);
+            VALUES (@categoryId, @name, @price);
         ";
 
         public const string qUpdateProduct = @"
@@ -29,6 +29,12 @@ namespace TeguhJaya.Api.Queries
             UPDATE products
             SET row_status = 1
             WHERE name = @name
+        ";
+
+        public const string qGetTotal = @"
+            SELECT COUNT(*)
+            FROM products
+            WHERE row_status = 0
         ";
     }
 }
