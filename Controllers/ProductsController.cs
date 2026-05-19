@@ -54,5 +54,22 @@ namespace TeguhJaya.Api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpPost]
+        public IActionResult CreateProduct([FromBody] Product product)
+        {
+            _logger.LogInformation("CreateProduct started");
+            try
+            {
+                var result = _repository.CreateProduct(product);
+                _logger.LogInformation("CreateProduct finished successfully");
+                return StatusCode(201, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating product");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace TeguhJaya.Api.Queries
         public const string qCreateCategory = @"
             INSERT INTO categories (name, image_base64, description)
             VALUES (@name, @imageBase64, @description)
-            RETURNING id, name, image_base64, description
+            RETURNING id, name, image_base64 AS ImageBase64, description
         ";
 
         public const string qDeleteCategory = @"

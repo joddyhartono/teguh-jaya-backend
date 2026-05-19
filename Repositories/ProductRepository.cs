@@ -34,5 +34,13 @@ namespace TeguhJaya.Api.Repositories
                 return connection.ExecuteScalar<int>(ProductQuery.qGetTotal);
             }
         }
+
+        public Product CreateProduct(Product product)
+        {
+            using (var connection = CreateConnection())
+            {
+                return connection.QueryFirstOrDefault<Product>(ProductQuery.qCreateProduct, product);
+            }
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace TeguhJaya.Api.Repositories
         {
             using (var connection = CreateConnection())
             {
-                return connection.QuerySingleOrDefault<Category>(CategoryQuery.qCreateCategory, category);
+                return connection.QueryFirstOrDefault<Category>(CategoryQuery.qCreateCategory, category);
             }
         }
 
