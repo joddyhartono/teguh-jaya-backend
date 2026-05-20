@@ -72,6 +72,27 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [HttpPatch("{id}")]
+        public IActionResult UpdateProduct([FromRoute] int id, [FromBody] Product product)
+        {
+            _logger.LogInformation("UpdateProduct started");
+            try
+            {
+                product.Id = id;
+                var result = _repository.UpdateProduct(product);
+                if(result == 0)
+                {
+                    return NotFound("Product not found");
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while updating product");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
         [HttpPatch("{id}/delete")]
         public IActionResult DeleteProduct([FromRoute] int id)
         {

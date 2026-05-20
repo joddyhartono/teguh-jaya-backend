@@ -3,13 +3,13 @@ namespace TeguhJaya.Api.Queries
     public static class ProductQuery
     {
         public const string qGetProductsByCategory = @"
-            SELECT id, name, price, image_base64
+            SELECT id, name, price, image_base64 AS ImageBase64
             FROM products
             WHERE category_id = @categoryId AND row_status = 0
         ";
 
         public const string qGetProduct = @"
-            SELECT id, name, price, description, image_base64
+            SELECT id, name, price, description, image_base64 AS ImageBase64
             FROM products
             WHERE id = @id AND row_status = 0
         ";
@@ -22,8 +22,8 @@ namespace TeguhJaya.Api.Queries
 
         public const string qUpdateProduct = @"
             UPDATE products
-            SET name = @name, price = @price
-            WHERE row_status = 0
+            SET name = @name, image_base64 = @imageBase64, description = @description, price = @price 
+            WHERE id = @id AND row_status = 0
         ";
 
         public const string qDeleteProduct = @"

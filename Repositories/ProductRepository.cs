@@ -50,5 +50,13 @@ namespace TeguhJaya.Api.Repositories
                 return connection.Execute(ProductQuery.qDeleteProduct, new {id});
             }
         }
+
+        public int UpdateProduct(Product product)
+        {
+            using (var connection = CreateConnection())
+            {
+                return connection.Execute(ProductQuery.qUpdateProduct, product);
+            }
+        }
     }
 }
