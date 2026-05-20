@@ -55,7 +55,7 @@ namespace TeguhJaya.Api.Repositories
         {
             using (var connection = CreateConnection())
             {
-                return connection.ExecuteScalar<int>(CategoryQuery.qUpdateCategory, category);
+                return connection.Execute(CategoryQuery.qUpdateCategory, category);
             }
         }
     }

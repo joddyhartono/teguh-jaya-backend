@@ -71,5 +71,25 @@ namespace TeguhJaya.Api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpPatch("{id}/delete")]
+        public IActionResult DeleteProduct([FromRoute] int id)
+        {
+            _logger.LogInformation("DeleteProduct started");
+            try
+            {
+                var result = _repository.DeleteProduct(id);
+                if(result == 0)
+                {
+                    return NotFound("Product not found");
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while deleting product");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

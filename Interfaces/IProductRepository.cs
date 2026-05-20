@@ -8,5 +8,6 @@ namespace TeguhJaya.Api.Interfaces
         Product? GetProduct(int id);
         int GetTotal();
         Product CreateProduct(Product product);
+        int DeleteProduct(int id);
     }
 }

@@ -42,5 +42,13 @@ namespace TeguhJaya.Api.Repositories
                 return connection.QueryFirstOrDefault<Product>(ProductQuery.qCreateProduct, product);
             }
         }
+
+        public int DeleteProduct(int id)
+        {
+            using (var connection = CreateConnection())
+            {
+                return connection.Execute(ProductQuery.qDeleteProduct, new {id});
+            }
+        }
     }
 }

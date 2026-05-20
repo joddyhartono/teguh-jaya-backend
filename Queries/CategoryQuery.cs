@@ -23,7 +23,7 @@ namespace TeguhJaya.Api.Queries
         public const string qDeleteCategory = @"
             UPDATE categories
             SET row_status = 1
-            WHERE id = @id
+            WHERE id = @id AND row_status = 0
         ";
 
         public const string qGetCategory = @"

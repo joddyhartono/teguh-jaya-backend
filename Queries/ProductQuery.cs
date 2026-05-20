@@ -29,7 +29,7 @@ namespace TeguhJaya.Api.Queries
         public const string qDeleteProduct = @"
             UPDATE products
             SET row_status = 1
-            WHERE name = @name
+            WHERE id = @id AND row_status = 0
         ";
 
         public const string qGetTotal = @"
