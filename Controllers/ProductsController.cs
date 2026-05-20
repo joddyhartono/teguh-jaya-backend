@@ -54,5 +54,63 @@ namespace TeguhJaya.Api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpPost]
+        public IActionResult CreateProduct([FromBody] Product product)
+        {
+            _logger.LogInformation("CreateProduct started");
+            try
+            {
+                var result = _repository.CreateProduct(product);
+                _logger.LogInformation("CreateProduct finished successfully");
+                return StatusCode(201, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating product");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult UpdateProduct([FromRoute] int id, [FromBody] Product product)
+        {
+            _logger.LogInformation("UpdateProduct started");
+            try
+            {
+                product.Id = id;
+                var result = _repository.UpdateProduct(product);
+                if(result == 0)
+                {
+                    return NotFound("Product not found");
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while updating product");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPatch("{id}/delete")]
+        public IActionResult DeleteProduct([FromRoute] int id)
+        {
+            _logger.LogInformation("DeleteProduct started");
+            try
+            {
+                var result = _repository.DeleteProduct(id);
+                if(result == 0)
+                {
+                    return NotFound("Product not found");
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while deleting product");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

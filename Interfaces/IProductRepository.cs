@@ -7,5 +7,9 @@ namespace TeguhJaya.Api.Interfaces
         List<Product> GetProductsByCategory(int categoryId);
         Product? GetProduct(int id);
         int GetTotal();
+        Product CreateProduct(Product product);
+        int DeleteProduct(int id);
+
+        int UpdateProduct(Product product);
     }
 }
