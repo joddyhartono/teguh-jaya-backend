@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TeguhJaya.Api.Interfaces;
 
@@ -17,6 +18,7 @@ namespace TeguhJaya.Api.Controllers
             _productRepository = productRepository;
         }
         
+        [Authorize]
         [HttpGet]
         [Route("stats")]
         public IActionResult GetStats()

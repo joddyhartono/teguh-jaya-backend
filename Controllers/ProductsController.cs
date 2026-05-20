@@ -55,6 +55,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult CreateProduct([FromBody] Product product)
         {
@@ -72,6 +73,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("{id}")]
         public IActionResult UpdateProduct([FromRoute] int id, [FromBody] Product product)
         {
@@ -93,6 +95,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("{id}/delete")]
         public IActionResult DeleteProduct([FromRoute] int id)
         {

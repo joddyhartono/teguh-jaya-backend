@@ -36,6 +36,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetCategory([FromRoute] int id)
         {
@@ -53,6 +54,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult CreateCategory([FromBody] Category category)
         {
@@ -70,6 +72,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("{id}")]
         public IActionResult UpdateCategory(int id, [FromBody] Category category)
         {
@@ -91,6 +94,7 @@ namespace TeguhJaya.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("{id}/delete")]
         public IActionResult DeleteCategory([FromRoute] int id)
         {
